@@ -1,0 +1,39 @@
+Solar Panels (Monocrystalline)
+Price Range: GHS 500.00 (100W) - GHS 2,000.00 (550W)
+Notes: Individual panels of varying wattages.
+Inverters (Hybrid/Off-Grid Solar)
+Price Range: GHS 4,000.00 (Growatt 3000W Off Grid) - GHS 8,000.00 (Growatt 5kW Hybrid SPH5000)
+Notes: Includes Growatt (SPF, SPH series, ES), Livoltek Hybrid, SRNE Hybrid. (Voltronic Axpert models were out of stock).
+Inverters (Backup/Pure Sine Wave - can be integrated with solar via charge controller)
+Price Range: GHS 800.00 (Victron Phoenix Inverter 12/250) - GHS 8,000.00 (Luminous 10kVA Inverter)
+Notes: Includes Luminous, Su-vastika, SUKAM, and Victron Phoenix series.
+Inverter/Chargers (Multi-functional units)
+Price Range: GHS 2,500.00 (Victron MultiPlus 12/500/20-16) - GHS 15,000.00 (Victron MultiPlus 48/5000/70-100)
+Notes: Primarily Victron MultiPlus series.
+Inverters (Grid-Tied Solar)
+Price: GHS 1,800.00 (Growatt 1500S Inverter)
+Notes: Only one specific model identified in this category with a price.
+Solar Batteries (Lithium)
+Price Range: GHS 7,000.00 (Growatt Hope 3.3L-C1 Battery) - GHS 12,000.00 (Livoltek Hyper 5kWh Battery Module)
+Notes: Includes Growatt (AXE, GBLI, Hope), Livoltek.
+Solar Batteries (Lead-Acid - Tubular, GEL, AGM, SMF)
+Price Range: GHS 1,000.00 (SUKAM 100AH/12V SMF) - GHS 3,000.00 (Victron Energy 220Ah 12V Gel)
+Notes: Includes Luminous, Su-vastika, SUKAM, Victron Energy (excluding one "Out of stock" AGM model without a listed price).
+Solar Charge Controllers (MPPT)
+Price Range: GHS 500.00 (SRNE 30A MPPT) - GHS 7,000.00 (Victron SmartSolar MPPT 250/100 Tr VE.Can)
+Notes: Wide range from brands like Growatt, SRNE, and Victron.
+All-in-One Solar Systems (Integrated Inverter, Charger, and/or Battery)
+Price Range: GHS 8,000.00 (Victron EasySolar 24/1600/40-16) - GHS 20,000.00 (Livoltek All-In-One ESS 5kWh)
+Notes: Pre-packaged solutions.
+Electrical Integration Components (Distribution Boards, Change Over Switches)
+Price Range: GHS 80.00 (4 Way DB) - GHS 300.00 (Change Over Switch 100A Three Phase)
+Notes: Essential for connecting the solar system.
+Solar Cables
+Price Range: GHS 10.00 (4mm per meter) - GHS 15.00 (6mm per meter)
+Notes: Priced per meter.
+Battery & System Monitoring/Protection Accessories
+Price Range: GHS 300.00 (Growatt Shine WiFi F) - GHS 1,500.00 (Victron SmartShunt 1000A/50mV)
+Notes: Includes WiFi monitoring dongles, battery combiners (Victron Cyrix-ct), battery protectors (Victron Smart BatteryProtect), and shunts (Victron SmartShunt).
+AC Battery Chargers (for maintenance/initial charging)
+Price Range: GHS 700.00 (Victron Blue Smart IP65 Charger 12V 5A) - GHS 1,200.00 (Victron Blue Smart IP65 Charger 12V 15A)
+Notes: Standalone AC chargers from Victron.

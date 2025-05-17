@@ -1,0 +1,169 @@
+🔧 Prompt: Build a Solar Rooftop Estimator Web App (SunSmart)
+🧭 Objective
+Build a fully client-side solar rooftop estimation web app called SunSmart, using only HTML, CSS, and JavaScript (no frameworks). The app helps homeowners in Ghana estimate:
+
+How much electricity they can generate from rooftop solar panels.
+
+How many solar panels they’ll need.
+
+Estimated system cost based on real panel pricing.
+
+Their estimated savings, using live PVGIS solar data via API.
+
+This app must be:
+
+Mobile-friendly
+
+Non-technical
+
+Intuitive to use
+
+📄 Pages & Components
+1. Home Page
+Welcome message
+
+Button: “Estimate My Solar Potential”
+
+Short explanation: “No technical knowledge needed. Just tell us where you live and how much you spend on electricity.”
+
+2. Estimator Page
+Include the following components:
+
+🧍 User Inputs (with non-technical UI)
+A. Location
+Input: Address or region (optional GPS-based auto-detection)
+
+Output: latitude and longitude (use default if no GPS)
+
+Use: Accra lat/lon (5.6037, -0.1870) as fallback
+
+B. Sun Direction (Compass Visual)
+Visual compass image (provided or placeholder)
+
+Prompt: “Where does the sun rise relative to the front of your house?”
+
+User selects a quadrant: front, back, left, right
+
+Output: azimuth angle
+
+Left → 90° (East)
+
+Right → 270° (West)
+
+Front → 180° (South)
+
+Back → 0° (North)
+
+C. Roof Type and Slope
+Dropdowns or buttons:
+
+Type: Flat, Slightly Sloped, Steep
+
+Maps to tilt angles: 5°, 15°, 30°
+
+D. Electricity Spend
+Input: “How much do you spend on electricity each month (GHS)?”
+
+Logic:
+
+js
+Copy
+Edit
+let tariff;
+if (monthlySpend <= 525) {
+  tariff = 1.76; // for 0–300 kWh bracket
+} else {
+  tariff = 2.32; // for 301+ kWh bracket
+}
+const monthlyKWh = monthlySpend / tariff;
+const systemSizeKW = monthlyKWh / 120; // average output
+Output: peakpower in kWp for API
+
+E. Panel and Cost Estimate
+Use a 400W panel standard
+
+Panel cost: GHS 3,450 (based on DeepSolar)
+
+Installation fixed cost: GHS 6,000
+
+Number of panels:
+
+js
+Copy
+Edit
+const numPanels = Math.ceil(systemSizeKW * 1000 / 400);
+const totalCost = numPanels * 3450 + 6000;
+🌍 API Integration — PVGIS v5.3
+API endpoint:
+
+plaintext
+Copy
+Edit
+https://re.jrc.ec.europa.eu/api/v5_3/PVcalc?lat=...&lon=...&peakpower=...&loss=14&angle=...&aspect=...&outputformat=json
+Parameters:
+
+lat, lon → from user input or fallback
+
+peakpower → from spend input
+
+loss → fixed at 14%
+
+angle → from roof type
+
+aspect (azimuth) → from compass click
+
+Parse the response:
+
+js
+Copy
+Edit
+const kWhPerYear = data.outputs.totals.fixed.E_y;
+const CO2Saved = data.outputs.totals.fixed.CO2_savings;
+📊 Output Section
+Display:
+
+Estimated solar output: kWh/year
+
+Estimated CO₂ savings: kg/year
+
+Number of panels needed
+
+Estimated system cost
+
+Optional: download as PDF or share
+
+💅 Design Guidelines
+Clean layout with CSS Grid/Flexbox
+
+Soft yellow and deep green as brand colors
+
+Use Google Fonts: "Poppins" for headings, "Inter" for body
+
+Buttons: rounded, large touch targets
+
+Include form validation and error messages
+
+Use icons (e.g., Lucide or Heroicons via CDN)
+
+📁 File Structure
+css
+Copy
+Edit
+/sun-smart/
+├── index.html           → Home page
+├── estimator.html       → Estimation form
+├── js/
+│   └── main.js          → All logic + API call
+├── css/
+│   └── style.css        → Styling
+├── images/
+│   └── compass.png      → Visual for roof orientation
+└── README.md
+⚙️ Additional Instructions
+No backend. All logic and data runs in the browser.
+
+Use fetch() for API call.
+
+All assumptions and tariffs reflect May 2025 PURC rates.
+
+Code should be readable and modular (JS functions, CSS classes).
