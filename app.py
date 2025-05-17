@@ -197,4 +197,8 @@ def geocode_location():
         }), 500
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    # Only run this in development
+    app.run(debug=True)
+
+# Add this line at the end of the file
+app = app
