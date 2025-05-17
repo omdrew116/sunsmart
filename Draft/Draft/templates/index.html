@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SunSmart - Solar Rooftop Estimator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container home-container">
+        <header>
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-icon">
+                    <circle cx="12" cy="12" r="5" stroke="#FDC500" stroke-width="2"/>
+                    <path d="M12 2V4" stroke="#FDC500" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M12 20V22" stroke="#FDC500" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M4 12H2" stroke="#FDC500" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M22 12H20" stroke="#FDC500" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M19.8 4.2L18.4 5.6" stroke="#FDC500" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M5.6 18.4L4.2 19.8" stroke="#FDC500" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M19.8 19.8L18.4 18.4" stroke="#FDC500" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M5.6 5.6L4.2 4.2" stroke="#FDC500" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <h1>SunSmart</h1>
+            </div>
+        </header>
+        
+        <main class="home-main">
+            <div class="hero">
+                <div class="hero-content">
+                    <h2>Harness the Sun's Power in Ghana</h2>
+                    <p class="lead">Find out how much you can save with solar energy on your rooftop. No technical knowledge needed.</p>
+                    <p class="description">Just tell us where you live and how much you spend on electricity.</p>
+                    <a href="/estimator" class="btn btn-primary">
+                        <i data-lucide="sun"></i>
+                        Estimate My Solar Potential
+                    </a>
+                </div>
+                <div class="hero-image">
+                    <div class="image-container">
+                        <div class="image-overlay"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <section class="benefits">
+                <h3>Why Go Solar?</h3>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i data-lucide="wallet"></i>
+                        </div>
+                        <h4>Save Money</h4>
+                        <p>Cut down your electricity bill and protect against future price increases.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i data-lucide="power"></i>
+                        </div>
+                        <h4>Reliable Power</h4>
+                        <p>Reduce dependency on the grid and minimize the impact of power outages.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i data-lucide="leaf"></i>
+                        </div>
+                        <h4>Eco-Friendly</h4>
+                        <p>Lower your carbon footprint and contribute to a cleaner Ghana.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <h4>Increase Value</h4>
+                        <p>Enhance your property value with a modern, sustainable energy system.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 SunSmart Solar Estimator</p>
+            <p>Using live data from <a href="https://re.jrc.ec.europa.eu/pvg_tools/en/" target="_blank">PVGIS</a></p>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

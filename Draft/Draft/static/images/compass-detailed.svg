@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer circle -->
+  <circle cx="150" cy="150" r="148" stroke="#333333" stroke-width="2" fill="none" />
+  
+  <!-- Inner circle with house -->
+  <circle cx="150" cy="150" r="70" fill="#F5F5F5" stroke="#777777" stroke-width="1" />
+  
+  <!-- House in the center -->
+  <g transform="translate(125, 130)">
+    <path d="M0,20 L0,40 L50,40 L50,20 L25,0 Z" fill="none" stroke="#006241" stroke-width="2" />
+    <rect x="10" y="25" width="10" height="15" fill="none" stroke="#006241" stroke-width="2" />
+    <rect x="30" y="25" width="10" height="15" fill="none" stroke="#006241" stroke-width="2" />
+  </g>
+  
+  <!-- Dividing lines for 8 directions -->
+  <line x1="150" y1="2" x2="150" y2="298" stroke="#333333" stroke-width="1" />
+  <line x1="2" y1="150" x2="298" y2="150" stroke="#333333" stroke-width="1" />
+  <line x1="44" y1="44" x2="256" y2="256" stroke="#333333" stroke-width="1" />
+  <line x1="256" y1="44" x2="44" y2="256" stroke="#333333" stroke-width="1" />
+  
+  <!-- Direction labels -->
+  <g font-family="'Poppins', sans-serif" font-size="14" fill="#333333" text-anchor="middle">
+    <!-- Cardinal directions (NESW) -->
+    <text x="150" y="30" font-weight="bold">N</text>
+    <text x="270" y="154" font-weight="bold">E</text>
+    <text x="150" y="280" font-weight="bold">S</text>
+    <text x="30" y="154" font-weight="bold">W</text>
+    
+    <!-- Ordinal directions (NE, SE, SW, NW) -->
+    <text x="235" y="65" font-size="12">NE</text>
+    <text x="235" y="245" font-size="12">SE</text>
+    <text x="65" y="245" font-size="12">SW</text>
+    <text x="65" y="65" font-size="12">NW</text>
+  </g>
+  
+  <!-- House position labels -->
+  <g font-family="'Poppins', sans-serif" font-size="11" fill="#006241" text-anchor="middle">
+    <text x="150" y="90" font-weight="bold">BACK</text>
+    <text x="210" y="100" font-weight="bold">BACK RIGHT</text>
+    <text x="240" y="150" font-weight="bold">RIGHT</text>
+    <text x="210" y="200" font-weight="bold">FRONT RIGHT</text>
+    <text x="150" y="220" font-weight="bold">FRONT</text>
+    <text x="90" y="200" font-weight="bold">FRONT LEFT</text>
+    <text x="60" y="150" font-weight="bold">LEFT</text>
+    <text x="90" y="100" font-weight="bold">BACK LEFT</text>
+  </g>
+  
+  <!-- Sun symbol -->
+  <g transform="translate(225, 75)">
+    <circle cx="0" cy="0" r="15" fill="#FDC500" />
+    <line x1="-18" y1="0" x2="-6" y2="0" stroke="#FDC500" stroke-width="2" />
+    <line x1="6" y1="0" x2="18" y2="0" stroke="#FDC500" stroke-width="2" />
+    <line x1="0" y1="-18" x2="0" y2="-6" stroke="#FDC500" stroke-width="2" />
+    <line x1="0" y1="6" x2="0" y2="18" stroke="#FDC500" stroke-width="2" />
+    <line x1="-12" y1="-12" x2="-4" y2="-4" stroke="#FDC500" stroke-width="2" />
+    <line x1="4" y1="4" x2="12" y2="12" stroke="#FDC500" stroke-width="2" />
+    <line x1="-12" y1="12" x2="-4" y2="4" stroke="#FDC500" stroke-width="2" />
+    <line x1="4" y1="-4" x2="12" y2="-12" stroke="#FDC500" stroke-width="2" />
+  </g>
+</svg>
