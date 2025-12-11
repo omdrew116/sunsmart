@@ -424,13 +424,34 @@ function setupRoofTypeSelection() {
 function setupBatteryOptions() {
     const batteryOptions = document.querySelectorAll('input[name="battery-option"]');
     const includesBatteryInput = document.getElementById('includes-battery');
-    
+
+    toggleFinancialSummary(includesBatteryInput.value === 'true');
+
     batteryOptions.forEach(option => {
         option.addEventListener('change', function() {
             if (this.checked) {
                 includesBatteryInput.value = this.value === 'yes';
+                toggleFinancialSummary(this.value === 'yes');
             }
         });
+    });
+}
+
+/**
+ * Toggle visibility of monthly production and savings summary sections based on storage selection
+ */
+function toggleFinancialSummary(show) {
+    const yearlySavingsCard = document.getElementById('yearly-savings')?.closest('.result-card');
+    const lifetimeSavingsCard = document.getElementById('lifetime-savings')?.closest('.result-card');
+    const monthlyProductionDetail = document.getElementById('monthly-production')?.closest('.detail-item');
+
+    [yearlySavingsCard, lifetimeSavingsCard, monthlyProductionDetail].forEach(element => {
+        if (!element) return;
+        if (show) {
+            element.classList.remove('hidden');
+        } else {
+            element.classList.add('hidden');
+        }
     });
 }
 
@@ -559,6 +580,8 @@ function processResults(data, systemSizeKW, monthlyKWh) {
         const yearlySavings = monthlySpend * 12;  // Simplification: assume all monthly spend is saved
         const lifetimeSavings = yearlySavings * 25;  // 25 year system lifespan
         const paybackYears = totalCost / yearlySavings;
+
+        toggleFinancialSummary(includesBattery);
         
         // Update results UI
         document.getElementById('yearly-production').textContent = kWhPerYear.toLocaleString();
@@ -659,6 +682,8 @@ function generateFallbackResults(systemSizeKW, monthlyKWh) {
     const yearlySavings = monthlySpend * 12;  // Simplification: assume all monthly spend is saved
     const lifetimeSavings = yearlySavings * 25;  // 25 year system lifespan
     const paybackYears = totalCost / yearlySavings;
+
+    toggleFinancialSummary(includesBattery);
     
     // Update results UI
     document.getElementById('yearly-production').textContent = Math.round(kWhPerYear).toLocaleString();

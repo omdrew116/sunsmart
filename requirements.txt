@@ -1,5 +1,7 @@
+fastapi>=0.115.0
 flask
 flask-sqlalchemy
 requests
 python-dotenv
 gunicorn
+uvicorn>=0.30.6
