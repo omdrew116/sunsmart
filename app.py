@@ -4,6 +4,23 @@ from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from models import db, SolarCalculation
 
+
+def _require_number(value, name, cast_type=float, minimum=None):
+    """Validate that a numeric field exists and meets optional constraints."""
+    if value is None:
+        raise ValueError(f"{name} is required")
+
+    try:
+        number = cast_type(value)
+    except (TypeError, ValueError):
+        friendly_type = "integer" if cast_type is int else "number"
+        raise ValueError(f"{name} must be a valid {friendly_type}")
+
+    if minimum is not None and number < minimum:
+        raise ValueError(f"{name} must be at least {minimum}")
+
+    return number
+
 # create the app
 app = Flask(__name__)
 app.secret_key = os.environ.get("SESSION_SECRET", "sunsmart-solar-app")
@@ -58,26 +75,41 @@ def pvgis_proxy():
 def save_calculation():
     """Save a new solar calculation to the database"""
     try:
-        data = request.get_json()
-        
+        data = request.get_json() or {}
+
+        # Validate and coerce numeric inputs
+        latitude = _require_number(data.get('latitude'), 'Latitude')
+        longitude = _require_number(data.get('longitude'), 'Longitude')
+        azimuth = _require_number(data.get('azimuth'), 'Azimuth', int)
+        tilt = _require_number(data.get('tilt'), 'Tilt', int)
+        monthly_spend = _require_number(data.get('monthlySpend'), 'Monthly spend', minimum=0)
+        system_size_kw = _require_number(data.get('systemSizeKW'), 'System size (kW)', minimum=0)
+        monthly_kwh = _require_number(data.get('monthlyKWh'), 'Monthly usage (kWh)', minimum=0)
+        yearly_production = _require_number(data.get('yearlyProduction'), 'Yearly production', minimum=0)
+        co2_savings = _require_number(data.get('co2Savings'), 'CO₂ savings', minimum=0)
+        panels_needed = _require_number(data.get('panelsNeeded'), 'Panels needed', int, minimum=1)
+        system_cost = _require_number(data.get('systemCost'), 'System cost', minimum=0)
+
+        location = data.get('location', 'Unknown')
+
         # Create a new calculation record
         calculation = SolarCalculation(
-            location=data.get('location', 'Unknown'),
-            latitude=float(data.get('latitude')),
-            longitude=float(data.get('longitude')),
-            azimuth=int(data.get('azimuth')),
-            tilt=int(data.get('tilt')),
-            monthly_spend=float(data.get('monthlySpend')),
-            system_size_kw=float(data.get('systemSizeKW')),
-            monthly_kwh=float(data.get('monthlyKWh')),
-            yearly_production=float(data.get('yearlyProduction')),
-            co2_savings=float(data.get('co2Savings')),
-            panels_needed=int(data.get('panelsNeeded')),
-            system_cost=float(data.get('systemCost')),
+            location=location,
+            latitude=latitude,
+            longitude=longitude,
+            azimuth=azimuth,
+            tilt=tilt,
+            monthly_spend=monthly_spend,
+            system_size_kw=system_size_kw,
+            monthly_kwh=monthly_kwh,
+            yearly_production=yearly_production,
+            co2_savings=co2_savings,
+            panels_needed=panels_needed,
+            system_cost=system_cost,
             is_fallback=data.get('isFallback', False),
             client_ip=request.remote_addr
         )
-        
+
         # Save to database
         db.session.add(calculation)
         db.session.commit()
@@ -99,7 +131,16 @@ def save_calculation():
 def get_calculations():
     """Get all calculations, with optional limit parameter"""
     try:
-        limit = request.args.get('limit', 10, type=int)
+        limit_param = request.args.get('limit', 10, type=int)
+
+        if limit_param is None:
+            return jsonify({
+                'success': False,
+                'error': 'Limit must be a valid integer'
+            }), 400
+
+        # Clamp limit between 1 and 100 to avoid excessive responses
+        limit = max(1, min(limit_param, 100))
         
         calculations = SolarCalculation.query.order_by(
             SolarCalculation.created_at.desc()
